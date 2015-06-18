@@ -31,13 +31,13 @@ public class EntitySmashCube extends EntityAmbientCreature {
 	//Getter for the sound made when the entity takes damage (in this case also the setter).
 	@Override
 	protected String getHurtSound() {
-        return "finalsmash:mob.smashcube.hurt";
+        return "finalsmash:smashcubeHit";
     }
 	
 	//Getter for the sound made when the entity reaches 0 HP (in this case also the setter).
 	@Override
 	protected String getDeathSound() {
-        return "finalsmash:mob.smashcube.death";
+        return "finalsmash:smashcubeDeath";
     }
 	@Override
 	protected Item getDropItem() {
