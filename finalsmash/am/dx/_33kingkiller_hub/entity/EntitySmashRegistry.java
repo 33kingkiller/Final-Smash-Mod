@@ -3,6 +3,7 @@ package am.dx._33kingkiller_hub.entity;
 import net.minecraft.entity.EntityList;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import am.dx._33kingkiller_hub.entity.passive.EntitySmashCube;
+import am.dx._33kingkiller_hub.main.Smash;
 
 public class EntitySmashRegistry {
 
@@ -18,11 +19,11 @@ public class EntitySmashRegistry {
 	//Creates/tracks entities.
 	@SuppressWarnings("unchecked")
 	public static void CreateEntity(@SuppressWarnings("rawtypes") Class entityClass, String entityName, int solidColour, int spotColour) {
-		int randomID = EntityRegistry.findGlobalUniqueEntityId();
+		int entityID = 27;
 		
-		EntityRegistry.registerGlobalEntityID(entityClass, entityName, randomID);
+		EntityRegistry.registerModEntity(entityClass, entityName, entityID, Smash.modInstance, 64, 1, true);
 		
-		CreateEgg(randomID, solidColour, spotColour);
+		CreateEgg(entityID, solidColour, spotColour);
 	}
 	
 	//Creates entity eggs.
