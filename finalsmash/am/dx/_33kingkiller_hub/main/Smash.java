@@ -5,13 +5,14 @@ import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import am.dx._33kingkiller_hub.entity.EntitySmashRegistry;
 import am.dx._33kingkiller_hub.item.ItemSmashBall;
+import am.dx._33kingkiller_hub.item.ItemSmashEgg;
 
 import com.webs.kingkillersModCore.item.ItemCore;
 
@@ -32,6 +33,7 @@ public class Smash {
     
     //Creates item variables.
     public static Item itemSmashBall;
+    public static Item eggSmashCube;
     
     //Creates a custom creative tab.
     public static CreativeTabs tabSmash = new CreativeTabs("FinalSmash") {
@@ -54,6 +56,7 @@ public class Smash {
     public void init(FMLInitializationEvent event) {
     	//Registers item models/textures.
     	Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemSmashBall, 0, new ModelResourceLocation("finalsmash:FinalSmashitem.itemSmashBall", "inventory"));
+    	Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(eggSmashCube, 0, new ModelResourceLocation("finalsmash:FinalSmashitem.itemSmashBall", "inventory"));
     	
     	//Enables the custom entity registry/renderer.
     	EntitySmashRegistry.EntityRegistry();
@@ -64,9 +67,11 @@ public class Smash {
     public void Item() {
     	//Defines item variables.
     	itemSmashBall = new ItemSmashBall().setUnlocalizedName("itemSmashBall").setCreativeTab(tabSmash);
+    	eggSmashCube = new ItemSmashEgg().setUnlocalizedName("eggSmashCube");
     	
     	//Registers items.
     	ItemCore.RegisterItemVariable(itemSmashBall, MODID);
+    	ItemCore.RegisterItemVariable(eggSmashCube, MODID);
     }
     
     //Registers crafting recipes.
