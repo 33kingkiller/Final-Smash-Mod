@@ -11,8 +11,8 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import am.dx._33kingkiller_hub.entity.EntitySmashRegistry;
-import am.dx._33kingkiller_hub.item.ItemSmashBall;
 import am.dx._33kingkiller_hub.item.ItemSmashEgg;
+import am.dx._33kingkiller_hub.item.ItemZeldaBow;
 
 import com.webs.kingkillersModCore.item.ItemCore;
 
@@ -32,14 +32,14 @@ public class Smash {
     public static Smash modInstance;
     
     //Creates item variables.
-    public static Item itemSmashBall;
     public static Item eggSmashCube;
+    public static Item zeldaBow;
     
     //Creates a custom creative tab.
     public static CreativeTabs tabSmash = new CreativeTabs("FinalSmash") {
 		@Override
 		public Item getTabIconItem() {
-			return itemSmashBall;
+			return eggSmashCube;
 		}
     };
     
@@ -55,8 +55,8 @@ public class Smash {
     @EventHandler
     public void init(FMLInitializationEvent event) {
     	//Registers item models/textures.
-    	Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemSmashBall, 0, new ModelResourceLocation("finalsmash:FinalSmashitem.itemSmashBall", "inventory"));
-    	Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(eggSmashCube, 0, new ModelResourceLocation("finalsmash:FinalSmashitem.itemSmashBall", "inventory"));
+    	Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(eggSmashCube, 0, new ModelResourceLocation("finalsmash:FinalSmashitem.eggSmashCube", "inventory"));
+    	Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(zeldaBow, 0, new ModelResourceLocation("finalsmash:FinalSmashitem.zeldaBow", "inventory"));
     	
     	//Enables the custom entity registry/renderer.
     	EntitySmashRegistry.EntityRegistry();
@@ -66,12 +66,12 @@ public class Smash {
     //Registers and defines items.
     public void Item() {
     	//Defines item variables.
-    	itemSmashBall = new ItemSmashBall().setUnlocalizedName("itemSmashBall").setCreativeTab(tabSmash);
     	eggSmashCube = new ItemSmashEgg().setUnlocalizedName("eggSmashCube");
+    	zeldaBow = new ItemZeldaBow().setUnlocalizedName("zeldaBow");
     	
     	//Registers items.
-    	ItemCore.RegisterItemVariable(itemSmashBall, MODID);
     	ItemCore.RegisterItemVariable(eggSmashCube, MODID);
+    	ItemCore.RegisterItemVariable(zeldaBow, MODID);
     }
     
     //Registers crafting recipes.

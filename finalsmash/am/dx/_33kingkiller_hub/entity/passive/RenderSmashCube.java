@@ -1,8 +1,8 @@
 package am.dx._33kingkiller_hub.entity.passive;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
-import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 
@@ -12,8 +12,8 @@ public class RenderSmashCube extends RenderLiving {
 	private static final ResourceLocation smashcubeTextures = new ResourceLocation("finalsmash:textures/entity/smashcube.png");
 
 	//Constructor.
-    public RenderSmashCube(RenderManager p_i46187_1_, ModelBase p_i46187_2_, float p_i46187_3_) {
-        super(p_i46187_1_, p_i46187_2_, p_i46187_3_);
+    public RenderSmashCube(ModelBase p_i46187_2_, float p_i46187_3_) {
+        super(Minecraft.getMinecraft().getRenderManager(), p_i46187_2_, p_i46187_3_);
     }
 
     //Setter for entity texture locations.
@@ -22,6 +22,7 @@ public class RenderSmashCube extends RenderLiving {
     }
     
     //Getter for entity texture locations.
+    @Override
     protected ResourceLocation getEntityTexture(Entity entity) {
         return this.func_180572_a((EntitySmashCube) entity);
     }

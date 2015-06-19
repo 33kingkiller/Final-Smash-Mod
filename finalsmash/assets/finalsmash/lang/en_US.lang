@@ -2,5 +2,7 @@ itemGroup.FinalSmash=Final Smash
 
 item.itemSmashBall.name=Smash Ball
 item.eggSmashCube.name=Smash Egg
+item.zeldaBow.name=FINAL SMASH - ZELDA
 
 entity.SmashCube.name=Smash Cube
+entity.SmashEgg.name=Smash Egg

@@ -1,19 +1,29 @@
 package am.dx._33kingkiller_hub.entity.passive;
 
+import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.passive.EntityAmbientCreature;
-import net.minecraft.item.Item;
+import net.minecraft.entity.ai.EntityAIPanic;
+import net.minecraft.entity.ai.EntityAITempt;
+import net.minecraft.entity.ai.EntityAIWander;
+import net.minecraft.entity.ai.EntityAIWatchClosest;
+import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import am.dx._33kingkiller_hub.main.Smash;
 
-public class EntitySmashCube extends EntityAmbientCreature {
+public class EntitySmashCube extends EntityAnimal {
 
-	//Constructor. Registers misc.
+	//Constructor. Registers AI and other properties.
 	public EntitySmashCube(World worldIn) {
 		super(worldIn);
 		this.isImmuneToFire = true;
         this.experienceValue = 5;
-		this.setSize(0.5F, 0.9F);
+		this.setSize(0.9F, 1.9F);
+		this.setCustomNameTag("SETTLE IT IN SMASH!");
+		this.tasks.addTask(0, new EntityAIPanic(this, 2.0D));
+		this.tasks.addTask(1, new EntityAIWander(this, 1.0D));
+		this.tasks.addTask(2, new EntityAITempt(this, 1.25D, Smash.eggSmashCube, false));
+		this.tasks.addTask(3, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
 	}
 	
 	//Getter for sound volume (in this case also the setter).
@@ -39,17 +49,31 @@ public class EntitySmashCube extends EntityAmbientCreature {
 	protected String getDeathSound() {
         return "finalsmash:smashcubeDeath";
     }
+	
+	//Getter for entity drops (in this case also the setter).
 	@Override
-	protected Item getDropItem() {
-        return Smash.itemSmashBall;
+	protected void dropFewItems(boolean b, int i) {
+		int randomDrop = this.rand.nextInt(2) + 1 + this.rand.nextInt(1 + i);
+		
+		for(int k = 0; k < randomDrop; ++k) {
+			if (k == 1) {
+				this.dropItem(Smash.eggSmashCube, 1);
+			}
+		}
     }
 
 	//Sets the base attributes for the entity.
 	@Override
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(0.1D);
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.5D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(8.9D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.20000000298023224D);
     }
+
+	//Code for breeding.
+	@Override
+	public EntityAgeable createChild(EntityAgeable ageable) {
+		return new EntitySmashCube(worldObj);
+	}
 
 }
