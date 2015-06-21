@@ -8,6 +8,7 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.world.World;
 import am.dx._33kingkiller_hub.main.Smash;
 
@@ -56,8 +57,12 @@ public class EntitySmashCube extends EntityAnimal {
 		int randomDrop = this.rand.nextInt(2) + 1 + this.rand.nextInt(1 + i);
 		
 		for(int k = 0; k < randomDrop; ++k) {
-			if (k == 1) {
+			if (k == 0) {
 				this.dropItem(Smash.eggSmashCube, 1);
+			}else if(k == 1) {
+				this.dropItem(Smash.zeldaBow, 1);
+			}else {
+				this.dropItem(Items.diamond, 1);
 			}
 		}
     }

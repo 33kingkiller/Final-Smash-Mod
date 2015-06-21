@@ -17,6 +17,8 @@ public class EntitySmashRegistry {
 	public static void RegisterEntity() {
 		CreateEntity(EntitySmashCube.class, "SmashCube", 27);
 		CreateEntity(EntitySmashEgg.class, "SmashEgg", 28);
+		CreateEntity(EntityZeldaArrow.class, "ZeldaArrow", 29);
+		
 		for (int i = 0; i < BiomeGenBase.getBiomeGenArray().length; i++) {
 			if (BiomeGenBase.getBiomeGenArray() != null) {
 				EntityRegistry.addSpawn(EntitySmashCube.class, 99, 1, 1, EnumCreatureType.CREATURE, BiomeGenBase.getBiome(1));

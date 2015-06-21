@@ -1,4 +1,5 @@
 {
   "smashcubeHit": {"category": "master","sounds": [{"name": "smashcubeHit","stream": false}]},
-  "smashcubeDeath": {"category": "master","sounds": [{"name": "smashcubeDeath","stream": false}]}
+  "smashcubeDeath": {"category": "master","sounds": [{"name": "smashcubeDeath","stream": false}]},
+  "homerun": {"category": "master","sounds": [{"name": "homerun","stream": false}]}
 }

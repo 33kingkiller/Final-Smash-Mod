@@ -1,25 +1,28 @@
 package am.dx._33kingkiller_hub.item;
 
-import am.dx._33kingkiller_hub.main.Smash;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Items;
-import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
 import net.minecraft.world.World;
+import am.dx._33kingkiller_hub.entity.EntityZeldaArrow;
+import am.dx._33kingkiller_hub.main.Smash;
 
-public class ItemZeldaBow extends Item {
+public class ItemZeldaBow extends ItemBow {
 	
+	//Constructor.
 	public ItemZeldaBow() {
 		this.setCreativeTab(Smash.tabSmash);
 		this.maxStackSize = 1;
         this.setMaxDamage(384);
 	}
 	
+	//Creates an arrow after the bow is shot (and other things).
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityPlayer playerIn, int timeLeft) {
         int j = this.getMaxItemUseDuration(stack) - timeLeft;
@@ -41,7 +44,7 @@ public class ItemZeldaBow extends Item {
                 f = 1.0F;
             }
 
-            EntityArrow entityarrow = new EntityArrow(worldIn, playerIn, f * 2.0F);
+            EntityZeldaArrow entityarrow = new EntityZeldaArrow(worldIn, playerIn, f * 2.0F);
 
             if (f == 1.0F) {
                 entityarrow.setIsCritical(true);
@@ -69,7 +72,7 @@ public class ItemZeldaBow extends Item {
             if (flag) {
                 entityarrow.canBePickedUp = 2;
             }else {
-                playerIn.inventory.consumeInventoryItem(Items.arrow);
+                playerIn.inventory.addItemStackToInventory(new ItemStack(Items.arrow, 0));
             }
 
             playerIn.triggerAchievement(StatList.objectUseStats[Item.getIdFromItem(this)]);
@@ -77,24 +80,14 @@ public class ItemZeldaBow extends Item {
             if (!worldIn.isRemote) {
                 worldIn.spawnEntityInWorld(entityarrow);
             }
+            
+            if(playerIn.inventory.hasItem(Smash.zeldaBow) && !playerIn.capabilities.isCreativeMode) {
+            	playerIn.inventory.consumeInventoryItem(Smash.zeldaBow);
+            }
         }
     }
 	
-	@Override
-	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityPlayer playerIn) {
-        return stack;
-    }
-	
-	@Override
-	public int getMaxItemUseDuration(ItemStack stack) {
-        return 1;
-    }
-	
-	@Override
-	public EnumAction getItemUseAction(ItemStack stack) {
-        return EnumAction.BOW;
-    }
-	
+	//Happens when the player right-clicks while holding the bow.
 	@Override
 	public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn) {
         net.minecraftforge.event.entity.player.ArrowNockEvent event = new net.minecraftforge.event.entity.player.ArrowNockEvent(playerIn, itemStackIn);
@@ -108,9 +101,24 @@ public class ItemZeldaBow extends Item {
         return itemStackIn;
     }
 	
+	//Gets the models/textures for the bow.
 	@Override
-	public int getItemEnchantability() {
-        return 0;
+    public ModelResourceLocation getModel(ItemStack stack, EntityPlayer player, int useRemaining) {
+        ModelResourceLocation modelresourcelocation = new ModelResourceLocation(Smash.MODID + ":FinalSmashitem.zeldaBow", "inventory");
+
+        if(stack.getItem() == this && player.getItemInUse() != null) {
+            if(useRemaining >= 18) {
+                modelresourcelocation = new ModelResourceLocation(Smash.MODID + ":FinalSmashitem.zeldaBow_pulling_2", "inventory");
+            }
+            else if(useRemaining > 13) {
+                modelresourcelocation = new ModelResourceLocation(Smash.MODID + ":FinalSmashitem.zeldaBow_pulling_1", "inventory");
+            }
+            else if(useRemaining > 0) {
+                modelresourcelocation = new ModelResourceLocation(Smash.MODID + ":FinalSmashitem.zeldaBow_pulling_0", "inventory");
+            }
+        }
+        
+        return modelresourcelocation;
     }
 
 }
