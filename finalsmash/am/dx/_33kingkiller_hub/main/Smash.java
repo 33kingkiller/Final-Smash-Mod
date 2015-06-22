@@ -82,12 +82,12 @@ public class Smash {
             registerItem(zeldaBow, 2, MODID + ":FinalSmashitem.zeldaBow_pulling_1");
             registerItem(zeldaBow, 3, MODID + ":FinalSmashitem.zeldaBow_pulling_2");
             
-            ModelBakery.addVariantName(zeldaBow, new String[] {MODID + ":FinalSmashitem.pitBow", MODID + ":FinalSmashitem.pitBow_pulling_0", MODID + ":FinalSmashitem.pitBow_pulling_1", MODID + ":FinalSmashitem.pitBow_pulling_2"});
+            ModelBakery.addVariantName(pitBow, new String[] {MODID + ":FinalSmashitem.pitBow", MODID + ":FinalSmashitem.pitBow_pulling_0", MODID + ":FinalSmashitem.pitBow_pulling_1", MODID + ":FinalSmashitem.pitBow_pulling_2"});
 
-            registerItem(zeldaBow, 0, MODID + ":FinalSmashitem.pitBow");
-            registerItem(zeldaBow, 1, MODID + ":FinalSmashitem.pitBow_pulling_0");
-            registerItem(zeldaBow, 2, MODID + ":FinalSmashitem.pitBow_pulling_1");
-            registerItem(zeldaBow, 3, MODID + ":FinalSmashitem.pitBow_pulling_2");
+            registerItem(pitBow, 0, MODID + ":FinalSmashitem.pitBow");
+            registerItem(pitBow, 1, MODID + ":FinalSmashitem.pitBow_pulling_0");
+            registerItem(pitBow, 2, MODID + ":FinalSmashitem.pitBow_pulling_1");
+            registerItem(pitBow, 3, MODID + ":FinalSmashitem.pitBow_pulling_2");
         }
     	
     	//Enables the custom entity registry/renderer.

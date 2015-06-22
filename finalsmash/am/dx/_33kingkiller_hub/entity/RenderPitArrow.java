@@ -16,13 +16,13 @@ import org.lwjgl.opengl.GL11;
 @SideOnly(Side.CLIENT)
 public class RenderPitArrow extends Render {
 	
-	private static final ResourceLocation arrowTextures = new ResourceLocation("finalsmash:textures/entity/zeldaarrow.png");
+	private static final ResourceLocation arrowTextures = new ResourceLocation("finalsmash:textures/entity/pitarrow.png");
 
     public RenderPitArrow() {
         super(Minecraft.getMinecraft().getRenderManager());
     }
 
-    public void doRender(EntityZeldaArrow p_180551_1_, double p_180551_2_, double p_180551_4_, double p_180551_6_, float p_180551_8_, float p_180551_9_) {
+    public void doRender(EntityPitArrow p_180551_1_, double p_180551_2_, double p_180551_4_, double p_180551_6_, float p_180551_8_, float p_180551_9_) {
         this.bindEntityTexture(p_180551_1_);
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         GlStateManager.pushMatrix();
@@ -89,12 +89,12 @@ public class RenderPitArrow extends Render {
 
     @Override
     protected ResourceLocation getEntityTexture(Entity entity) {
-        return this.getEntityTexture((EntityZeldaArrow)entity);
+        return this.getEntityTexture((EntityPitArrow)entity);
     }
 
     @Override
     public void doRender(Entity entity, double x, double y, double z, float p_76986_8_, float partialTicks) {
-        this.doRender((EntityZeldaArrow)entity, x, y, z, p_76986_8_, partialTicks);
+        this.doRender((EntityPitArrow)entity, x, y, z, p_76986_8_, partialTicks);
     }
 
 }
