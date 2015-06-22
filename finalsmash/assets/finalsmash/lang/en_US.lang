@@ -3,6 +3,8 @@ itemGroup.FinalSmash=Final Smash
 item.eggSmashCube.name=Smash Egg
 item.zeldaBow.name=FINAL SMASH - ZELDA
 item.itemZeldaArrow.name=Zelda's Arrow
+item.marthSword.name=FINAL SMASH - MARTH
+item.pitBow.name=FINAL SMASH - PIT
 
 entity.SmashCube.name=Smash Cube
 entity.SmashEgg.name=Smash Egg

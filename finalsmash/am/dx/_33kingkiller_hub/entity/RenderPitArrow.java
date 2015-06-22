@@ -14,11 +14,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
-public class RenderZeldaArrow extends Render {
+public class RenderPitArrow extends Render {
 	
-	private static final ResourceLocation arrowTextures = new ResourceLocation("finalsmash:textures/entity/pitarrow.png");
+	private static final ResourceLocation arrowTextures = new ResourceLocation("finalsmash:textures/entity/zeldaarrow.png");
 
-    public RenderZeldaArrow() {
+    public RenderPitArrow() {
         super(Minecraft.getMinecraft().getRenderManager());
     }
 
@@ -89,12 +89,12 @@ public class RenderZeldaArrow extends Render {
 
     @Override
     protected ResourceLocation getEntityTexture(Entity entity) {
-        return this.getEntityTexture((EntityPitArrow)entity);
+        return this.getEntityTexture((EntityZeldaArrow)entity);
     }
 
     @Override
     public void doRender(Entity entity, double x, double y, double z, float p_76986_8_, float partialTicks) {
-        this.doRender((EntityPitArrow)entity, x, y, z, p_76986_8_, partialTicks);
+        this.doRender((EntityZeldaArrow)entity, x, y, z, p_76986_8_, partialTicks);
     }
 
 }

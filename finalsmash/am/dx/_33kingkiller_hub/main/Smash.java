@@ -6,6 +6,8 @@ import net.minecraft.client.resources.model.ModelBakery;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.Item.ToolMaterial;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -15,6 +17,8 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import am.dx._33kingkiller_hub.entity.EntitySmashRegistry;
+import am.dx._33kingkiller_hub.item.ItemMarthSword;
+import am.dx._33kingkiller_hub.item.ItemPitBow;
 import am.dx._33kingkiller_hub.item.ItemSmashEgg;
 import am.dx._33kingkiller_hub.item.ItemZeldaBow;
 
@@ -40,6 +44,10 @@ public class Smash {
     public static Item zeldaBow;
     public static Item itemZeldaArrow;
     public static Item marthSword;
+    public static Item pitBow;
+    
+    //Tool Enums.
+    public static ToolMaterial materialMarth;
     
     //Creates a custom creative tab.
     public static CreativeTabs tabSmash = new CreativeTabs("FinalSmash") {
@@ -52,6 +60,7 @@ public class Smash {
     //Runs before the FML starts.
     @EventHandler
     public void preinit(FMLPreInitializationEvent e) {
+    	Enums();
     	Item();
     	Crafting();
     	Credit();
@@ -63,6 +72,7 @@ public class Smash {
     	//Registers item models/textures.
     	Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(eggSmashCube, 0, new ModelResourceLocation("finalsmash:FinalSmashitem.eggSmashCube", "inventory"));
     	Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemZeldaArrow, 0, new ModelResourceLocation("finalsmash:FinalSmashitem.itemZeldaArrow", "inventory"));
+    	Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(marthSword, 0, new ModelResourceLocation("finalsmash:FinalSmashitem.marthSword", "inventory"));
     	
     	if(event.getSide().isClient()) {
             ModelBakery.addVariantName(zeldaBow, new String[] {MODID + ":FinalSmashitem.zeldaBow", MODID + ":FinalSmashitem.zeldaBow_pulling_0", MODID + ":FinalSmashitem.zeldaBow_pulling_1", MODID + ":FinalSmashitem.zeldaBow_pulling_2"});
@@ -71,6 +81,13 @@ public class Smash {
             registerItem(zeldaBow, 1, MODID + ":FinalSmashitem.zeldaBow_pulling_0");
             registerItem(zeldaBow, 2, MODID + ":FinalSmashitem.zeldaBow_pulling_1");
             registerItem(zeldaBow, 3, MODID + ":FinalSmashitem.zeldaBow_pulling_2");
+            
+            ModelBakery.addVariantName(zeldaBow, new String[] {MODID + ":FinalSmashitem.pitBow", MODID + ":FinalSmashitem.pitBow_pulling_0", MODID + ":FinalSmashitem.pitBow_pulling_1", MODID + ":FinalSmashitem.pitBow_pulling_2"});
+
+            registerItem(zeldaBow, 0, MODID + ":FinalSmashitem.pitBow");
+            registerItem(zeldaBow, 1, MODID + ":FinalSmashitem.pitBow_pulling_0");
+            registerItem(zeldaBow, 2, MODID + ":FinalSmashitem.pitBow_pulling_1");
+            registerItem(zeldaBow, 3, MODID + ":FinalSmashitem.pitBow_pulling_2");
         }
     	
     	//Enables the custom entity registry/renderer.
@@ -84,11 +101,20 @@ public class Smash {
     	eggSmashCube = new ItemSmashEgg().setUnlocalizedName("eggSmashCube");
     	zeldaBow = new ItemZeldaBow().setUnlocalizedName("zeldaBow").setCreativeTab(tabSmash);
     	itemZeldaArrow = new Item().setUnlocalizedName("itemZeldaArrow").setCreativeTab(tabSmash);
+    	marthSword = new ItemMarthSword(materialMarth).setUnlocalizedName("marthSword").setCreativeTab(tabSmash);
+    	pitBow = new ItemPitBow().setUnlocalizedName("pitBow").setCreativeTab(tabSmash);
     	
     	//Registers items.
     	ItemCore.RegisterItemVariable(eggSmashCube, MODID);
     	ItemCore.RegisterItemVariable(zeldaBow, MODID);
     	ItemCore.RegisterItemVariable(itemZeldaArrow, MODID);
+    	ItemCore.RegisterItemVariable(marthSword, MODID);
+    	ItemCore.RegisterItemVariable(pitBow, MODID);
+    }
+    
+    //Registers enums such as tool materials.
+    public void Enums() {
+    	materialMarth = EnumHelper.addToolMaterial("MARTH", 3, 1, 12.0F, 60.0F, 0);
     }
     
     //Registers crafting recipes.
@@ -96,6 +122,7 @@ public class Smash {
     	
     }
     
+    //Registers models for items.
     @SideOnly(Side.CLIENT)
     public static void registerItem(Item item, int metadata, String itemName) {
         ItemModelMesher mesher = Minecraft.getMinecraft().getRenderItem().getItemModelMesher();
