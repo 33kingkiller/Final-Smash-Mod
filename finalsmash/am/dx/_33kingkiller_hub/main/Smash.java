@@ -125,7 +125,7 @@ public class Smash {
     //Registers enums such as tool materials.
     public void Enums() {
     	materialMarth = EnumHelper.addToolMaterial("MARTH", 3, 1, 12.0F, 60.0F, 0);
-    	materialLink = EnumHelper.addToolMaterial("LINK", 3, 6, 12.0F, 10.0F, 0);
+    	materialLink = EnumHelper.addToolMaterial("LINK", 3, 6, 12.0F, 9.0F, 0);
     }
     
     //Registers crafting recipes.
