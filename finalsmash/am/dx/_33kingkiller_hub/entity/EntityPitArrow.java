@@ -41,7 +41,7 @@ public class EntityPitArrow extends Entity implements IProjectile {
     public Entity shootingEntity;
     private int ticksInGround;
     private int ticksInAir;
-    private double damage = 5.0D;
+    private double damage = 1.0D;
     private int knockbackStrength;
 
     public EntityPitArrow(World worldIn) {
@@ -448,7 +448,7 @@ public class EntityPitArrow extends Entity implements IProjectile {
         if (!this.worldObj.isRemote && this.inGround && this.arrowShake <= 0) {
             boolean flag = this.canBePickedUp == 1 || this.canBePickedUp == 2 && entityIn.capabilities.isCreativeMode;
 
-            if (this.canBePickedUp == 1 && !entityIn.inventory.addItemStackToInventory(new ItemStack(Smash.itemZeldaArrow, 1))) {
+            if (this.canBePickedUp == 1 && !entityIn.inventory.addItemStackToInventory(new ItemStack(Smash.itemPitArrow, 1))) {
                 flag = false;
             }
 

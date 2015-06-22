@@ -45,25 +45,29 @@ public class ItemPitBow extends ItemBow {
 	            }
 
 	            EntityPitArrow entityarrow = new EntityPitArrow(worldIn, playerIn, f * 2.0F);
-
+	            EntityPitArrow entityarrow1 = new EntityPitArrow(worldIn, playerIn, f * 2.0F);
+	            EntityPitArrow entityarrow2 = new EntityPitArrow(worldIn, playerIn, f * 2.0F);
+	            
 	            if (f == 1.0F) {
 	                entityarrow.setIsCritical(true);
+	                entityarrow1.setIsCritical(true);
+	                entityarrow2.setIsCritical(true);
 	            }
 
 	            int k = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, stack);
 
 	            if (k > 0) {
 	                entityarrow.setDamage(entityarrow.getDamage() + (double)k * 0.5D + 0.5D);
+	                entityarrow1.setDamage(entityarrow1.getDamage() + (double)k * 0.5D + 0.5D);
+	                entityarrow2.setDamage(entityarrow2.getDamage() + (double)k * 0.5D + 0.5D);
 	            }
 
 	            int l = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, stack);
 
 	            if (l > 0) {
 	                entityarrow.setKnockbackStrength(l);
-	            }
-
-	            if (EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, stack) > 0) {
-	                entityarrow.setFire(100);
+	                entityarrow1.setKnockbackStrength(l);
+	                entityarrow2.setKnockbackStrength(l);
 	            }
 
 	            stack.damageItem(1, playerIn);
@@ -71,6 +75,8 @@ public class ItemPitBow extends ItemBow {
 
 	            if (flag) {
 	                entityarrow.canBePickedUp = 2;
+	                entityarrow1.canBePickedUp = 2;
+	                entityarrow2.canBePickedUp = 2;
 	            }else {
 	                playerIn.inventory.addItemStackToInventory(new ItemStack(Items.arrow, 0));
 	            }
@@ -79,10 +85,15 @@ public class ItemPitBow extends ItemBow {
 
 	            if (!worldIn.isRemote) {
 	                worldIn.spawnEntityInWorld(entityarrow);
+	                worldIn.spawnEntityInWorld(entityarrow1);
+	                worldIn.spawnEntityInWorld(entityarrow2);
 	            }
 	            
 	            if(playerIn.inventory.hasItem(Smash.pitBow) && !playerIn.capabilities.isCreativeMode) {
-	            	playerIn.inventory.consumeInventoryItem(Smash.pitBow);
+	            	playerIn.inventory.getCurrentItem().attemptDamageItem(100, itemRand);
+	            	entityarrow.setFire(100);
+	            	entityarrow1.setFire(100);
+	            	entityarrow2.setFire(100);
 	            }
 	        }
 	    }
@@ -97,7 +108,7 @@ public class ItemPitBow extends ItemBow {
 	        {
 	            playerIn.setItemInUse(itemStackIn, this.getMaxItemUseDuration(itemStackIn));
 	        }
-
+	        
 	        return itemStackIn;
 	    }
 		

@@ -83,7 +83,7 @@ public class RenderPitArrow extends Render {
         super.doRender(p_180551_1_, p_180551_2_, p_180551_4_, p_180551_6_, p_180551_8_, p_180551_9_);
     }
 
-    protected ResourceLocation getEntityTexture(EntityZeldaArrow p_180550_1_) {
+    protected ResourceLocation getEntityTexture(EntityPitArrow p_180550_1_) {
         return arrowTextures;
     }
 

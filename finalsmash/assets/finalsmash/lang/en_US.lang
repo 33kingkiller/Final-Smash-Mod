@@ -5,6 +5,7 @@ item.zeldaBow.name=FINAL SMASH - ZELDA
 item.itemZeldaArrow.name=Zelda's Arrow
 item.marthSword.name=FINAL SMASH - MARTH
 item.pitBow.name=FINAL SMASH - PIT
+item.itemPitArrow.name=Pit's Arrow
 
 entity.SmashCube.name=Smash Cube
 entity.SmashEgg.name=Smash Egg
