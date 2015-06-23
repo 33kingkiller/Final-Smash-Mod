@@ -104,8 +104,7 @@ public class ItemPitBow extends ItemBow {
 	        net.minecraftforge.event.entity.player.ArrowNockEvent event = new net.minecraftforge.event.entity.player.ArrowNockEvent(playerIn, itemStackIn);
 	        if (net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(event)) return event.result;
 
-	        if (playerIn.capabilities.isCreativeMode || playerIn.inventory.hasItem(Items.arrow) || !playerIn.inventory.hasItem(Items.arrow))
-	        {
+	        if (playerIn.capabilities.isCreativeMode || playerIn.inventory.hasItem(Items.arrow) || !playerIn.inventory.hasItem(Items.arrow)) {
 	            playerIn.setItemInUse(itemStackIn, this.getMaxItemUseDuration(itemStackIn));
 	        }
 	        

@@ -2,5 +2,7 @@
   "smashcubeHit": {"category": "master","sounds": [{"name": "smashcubeHit","stream": false}]},
   "smashcubeDeath": {"category": "master","sounds": [{"name": "smashcubeDeath","stream": false}]},
   "homerun": {"category": "master","sounds": [{"name": "homerun","stream": false}]},
-  "link": {"category": "master","sounds": [{"name": "link","stream": false}]}
+  "link": {"category": "master","sounds": [{"name": "link","stream": false}]},
+  "blaster.miss": {"category": "master","sounds": [{"name": "blaster/miss","stream": false}]},
+  "blaster.shoot": {"category": "master","sounds": [{"name": "blaster/shoot","stream": false}]}
 }

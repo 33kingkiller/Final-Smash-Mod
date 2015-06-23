@@ -7,6 +7,8 @@ item.marthSword.name=FINAL SMASH - MARTH
 item.pitBow.name=FINAL SMASH - PIT
 item.itemPitArrow.name=Pit's Arrow
 item.linkSword.name=FINAL SMASH - LINK
+item.megamanBlaster.name=FINAL SMASH - MEGAMAN
+item.itemBlasterCell.name=Blaster Cell
 
 entity.SmashCube.name=Smash Cube
 entity.SmashEgg.name=Smash Egg

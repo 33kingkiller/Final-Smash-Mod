@@ -19,6 +19,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import am.dx._33kingkiller_hub.entity.EntitySmashRegistry;
 import am.dx._33kingkiller_hub.item.ItemLinkSword;
 import am.dx._33kingkiller_hub.item.ItemMarthSword;
+import am.dx._33kingkiller_hub.item.ItemMegamanBlaster;
 import am.dx._33kingkiller_hub.item.ItemPitBow;
 import am.dx._33kingkiller_hub.item.ItemSmashEgg;
 import am.dx._33kingkiller_hub.item.ItemZeldaBow;
@@ -30,7 +31,7 @@ public class Smash {
 	
 	//FML important variables. DO NOT CHANGE "MODID."
     public static final String MODID = "FinalSmash";
-    public static final String VERSION = "pre1.0";
+    public static final String VERSION = "1.0";
     public static final String NAME = "Final Smash Mod";
     
     //Defines proxy classes.
@@ -48,6 +49,8 @@ public class Smash {
     public static Item pitBow;
     public static Item itemPitArrow;
     public static Item linkSword;
+    public static Item megamanBlaster;
+    public static Item itemBlasterCell;
     
     //Tool Enums.
     public static ToolMaterial materialMarth;
@@ -74,13 +77,14 @@ public class Smash {
     @EventHandler
     public void init(FMLInitializationEvent event) {
     	//Registers item models/textures.
-    	Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(eggSmashCube, 0, new ModelResourceLocation("finalsmash:FinalSmashitem.eggSmashCube", "inventory"));
-    	Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemZeldaArrow, 0, new ModelResourceLocation("finalsmash:FinalSmashitem.itemZeldaArrow", "inventory"));
-    	Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(marthSword, 0, new ModelResourceLocation("finalsmash:FinalSmashitem.marthSword", "inventory"));
-    	Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemPitArrow, 0, new ModelResourceLocation("finalsmash:FinalSmashitem.itemPitArrow", "inventory"));
-    	Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(linkSword, 0, new ModelResourceLocation("finalsmash:FinalSmashitem.linkSword", "inventory"));
-    	
     	if(event.getSide().isClient()) {
+    		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(eggSmashCube, 0, new ModelResourceLocation("finalsmash:FinalSmashitem.eggSmashCube", "inventory"));
+        	Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemZeldaArrow, 0, new ModelResourceLocation("finalsmash:FinalSmashitem.itemZeldaArrow", "inventory"));
+        	Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(marthSword, 0, new ModelResourceLocation("finalsmash:FinalSmashitem.marthSword", "inventory"));
+        	Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemPitArrow, 0, new ModelResourceLocation("finalsmash:FinalSmashitem.itemPitArrow", "inventory"));
+        	Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(linkSword, 0, new ModelResourceLocation("finalsmash:FinalSmashitem.linkSword", "inventory"));
+        	Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlasterCell, 0, new ModelResourceLocation("finalsmash:FinalSmashitem.itemBlasterCell", "inventory"));
+    		
             ModelBakery.addVariantName(zeldaBow, new String[] {MODID + ":FinalSmashitem.zeldaBow", MODID + ":FinalSmashitem.zeldaBow_pulling_0", MODID + ":FinalSmashitem.zeldaBow_pulling_1", MODID + ":FinalSmashitem.zeldaBow_pulling_2"});
 
             registerItem(zeldaBow, 0, MODID + ":FinalSmashitem.zeldaBow");
@@ -94,6 +98,13 @@ public class Smash {
             registerItem(pitBow, 1, MODID + ":FinalSmashitem.pitBow_pulling_0");
             registerItem(pitBow, 2, MODID + ":FinalSmashitem.pitBow_pulling_1");
             registerItem(pitBow, 3, MODID + ":FinalSmashitem.pitBow_pulling_2");
+            
+            ModelBakery.addVariantName(megamanBlaster, new String[] {MODID + ":FinalSmashitem.megamanBlaster", MODID + ":FinalSmashitem.megamanBlaster_pulling_0", MODID + ":FinalSmashitem.megamanBlaster_pulling_1", MODID + ":FinalSmashitem.megamanBlaster_pulling_2"});
+
+            registerItem(megamanBlaster, 0, MODID + ":FinalSmashitem.megamanBlaster");
+            registerItem(megamanBlaster, 1, MODID + ":FinalSmashitem.megamanBlaster_pulling_0");
+            registerItem(megamanBlaster, 2, MODID + ":FinalSmashitem.megamanBlaster_pulling_1");
+            registerItem(megamanBlaster, 3, MODID + ":FinalSmashitem.megamanBlaster_pulling_2");
         }
     	
     	//Enables the custom entity registry/renderer.
@@ -111,6 +122,8 @@ public class Smash {
     	pitBow = new ItemPitBow().setUnlocalizedName("pitBow").setCreativeTab(tabSmash);
     	itemPitArrow = new Item().setUnlocalizedName("itemPitArrow").setCreativeTab(tabSmash);
     	linkSword = new ItemLinkSword(materialLink).setUnlocalizedName("linkSword").setCreativeTab(tabSmash);
+    	megamanBlaster = new ItemMegamanBlaster().setUnlocalizedName("megamanBlaster").setCreativeTab(tabSmash);
+    	itemBlasterCell = new Item().setUnlocalizedName("itemBlasterCell").setCreativeTab(tabSmash);
     	
     	//Registers items.
     	ItemCore.RegisterItemVariable(eggSmashCube, MODID);
@@ -120,6 +133,8 @@ public class Smash {
     	ItemCore.RegisterItemVariable(pitBow, MODID);
     	ItemCore.RegisterItemVariable(itemPitArrow, MODID);
     	ItemCore.RegisterItemVariable(linkSword, MODID);
+    	ItemCore.RegisterItemVariable(megamanBlaster, MODID);
+    	ItemCore.RegisterItemVariable(itemBlasterCell, MODID);
     }
     
     //Registers enums such as tool materials.

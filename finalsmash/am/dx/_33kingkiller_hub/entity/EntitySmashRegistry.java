@@ -19,10 +19,11 @@ public class EntitySmashRegistry {
 		CreateEntity(EntitySmashEgg.class, "SmashEgg", 28);
 		CreateEntity(EntityZeldaArrow.class, "ZeldaArrow", 29);
 		CreateEntity(EntityPitArrow.class, "PitArrow", 30);
+		CreateEntity(EntityBlast.class, "MegamanBlast", 31);
 		
 		for (int i = 0; i < BiomeGenBase.getBiomeGenArray().length; i++) {
 			if (BiomeGenBase.getBiomeGenArray() != null) {
-				EntityRegistry.addSpawn(EntitySmashCube.class, 299, 1, 1, EnumCreatureType.CREATURE, BiomeGenBase.getBiome(1));
+				EntityRegistry.addSpawn(EntitySmashCube.class, 399, 1, 1, EnumCreatureType.CREATURE, BiomeGenBase.getBiome(1));
 			}
 		}
 	}

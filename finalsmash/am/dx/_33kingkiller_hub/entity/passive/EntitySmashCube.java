@@ -54,18 +54,21 @@ public class EntitySmashCube extends EntityAnimal {
 	//Getter for entity drops (in this case also the setter).
 	@Override
 	protected void dropFewItems(boolean b, int i) {
-		int randomDrop = this.rand.nextInt(2) + 1 + this.rand.nextInt(1 + i);
-		
-		for(int k = 0; k < randomDrop; ++k) {
-			if (k == 0) {
-				this.dropItem(Smash.eggSmashCube, 1);
-			}else if(k == 1) {
-				this.dropItem(Smash.zeldaBow, 1);
-			}else {
-				this.dropItem(Items.diamond, 1);
-			}
+		int randomDrop = this.rand.nextInt(6);
+		if (randomDrop == 1) {
+			this.dropItem(Smash.marthSword, 1);
+		}else if(randomDrop == 2) {
+			this.dropItem(Smash.zeldaBow, 1);
+		}else if(randomDrop == 3) {
+			this.dropItem(Smash.linkSword, 1);
+		}else if(randomDrop == 4) {
+			this.dropItem(Smash.pitBow, 1);
+		}else if(randomDrop == 5) {
+			this.dropItem(Smash.megamanBlaster, 1);
+		}else {
+			this.dropItem(Items.diamond, 1);
 		}
-    }
+	}
 
 	//Sets the base attributes for the entity.
 	@Override
