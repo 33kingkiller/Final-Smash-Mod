@@ -1,6 +1,7 @@
 package am.dx._33kingkiller_hub.item;
 
-import net.minecraft.client.Minecraft;
+import am.dx._33kingkiller_hub.entity.EntityZeldaArrow;
+import am.dx._33kingkiller_hub.main.Smash;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -11,9 +12,6 @@ import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
 import net.minecraft.world.World;
-import am.dx._33kingkiller_hub.entity.EntityZeldaArrow;
-import am.dx._33kingkiller_hub.main.Smash;
-import am.dx._33kingkiller_hub.particles.EntityFXGoldDiamond;
 
 public class ItemZeldaBow extends ItemBow {
 	
@@ -92,13 +90,6 @@ public class ItemZeldaBow extends ItemBow {
 	//Happens when the player right-clicks while holding the bow.
 	@Override
 	public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn) {
-		if (!worldIn.isRemote)	{
-		    double motionX = worldIn.rand.nextGaussian() * 0.02D;
-		    double motionY = worldIn.rand.nextGaussian() * 0.02D;
-		    double motionZ = worldIn.rand.nextGaussian() * 0.02D;
-		    Minecraft.getMinecraft().effectRenderer.addEffect(new EntityFXGoldDiamond(worldIn, playerIn.posX, playerIn.posY, playerIn.posZ, motionX, motionY, motionZ));
-		}
-		
 		net.minecraftforge.event.entity.player.ArrowNockEvent event = new net.minecraftforge.event.entity.player.ArrowNockEvent(playerIn, itemStackIn);
         if (net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(event)) return event.result;
 
